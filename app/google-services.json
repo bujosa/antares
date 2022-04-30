@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "317665647344",
+    "project_id": "antares-bfa29",
+    "storage_bucket": "antares-bfa29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317665647344:android:2352c9c532a28572dbc035",
+        "android_client_info": {
+          "package_name": "com.bujosa.antares"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317665647344-ahqtcndtk2n0pl8r2gul5g4asa3dffk9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bujosa.antares",
+            "certificate_hash": "0836af434c61dd8b54ec864d4ceb91c0feac7cb5"
+          }
+        },
+        {
+          "client_id": "317665647344-i6a8ok7l80nl3g5noav3pj58mrkepm5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ3atjCQZ8u84opvW0zVZFv9c0CB_I-Xw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317665647344-i6a8ok7l80nl3g5noav3pj58mrkepm5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

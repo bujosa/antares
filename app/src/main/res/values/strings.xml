@@ -1,5 +1,6 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Antares</string>
+
     <string name="textview">TextView</string>
     <string name="available_travels">Viajes Disponibles</string>
     <string name="search">Buscador</string>
@@ -16,11 +17,33 @@
     <string name="date_end_label">Fecha de salida</string>
     <string name="date_end">fecha de salida</string>
     <string name="favorite_label">Seleccionar</string>
-    <string name="filter">Busqueda Avanzada</string>
-    <string name="min_price_title">Precio minimo:</string>
+    <string name="filter">Búsqueda Avanzada</string>
+    <string name="min_price_title">Precio mínimo:</string>
     <string name="min_price_edit_text">0</string>
     <string name="max_price_edit_text">9999</string>
     <string name="apply_filter_button">Filtrar</string>
     <string name="cancel_filter_button">Cancelar</string>
     <string name="buyButton">Comprar Viaje</string>
+
+    <string name="login_email_auto_complete">Correo</string>
+    <string name="string_login_password_auto_complete">Contraseña</string>
+    <string name="string_register_password_auto_complete">Confirmar la Contraseña</string>
+    <string name="login_button_mail_text">Iniciar Sesión</string>
+    <string name="login_button_gmail_text">GMAIL</string>
+    <string name="login_button_register_text">Registrarse</string>
+    <string name="login_email_error_one">El correo no puede estar vacío</string>
+    <string name="login_email_error_two">La contraseña no puede estar vacía</string>
+    <string name="login_mail_access_token">Ha ocurrido un error intentando de acceder</string>
+    <string name="login_verified_mail_error">No has validado tu cuenta, ¿te enviamos un correo?</string>
+    <string name="login_verified_mail_error_ok">Correo enviado</string>
+    <string name="login_verified_mail_error_sent">Hemos enviado un mensaje a tu correo</string>
+    <string name="login_verified_mail_error_not_sent">No tenemos permiso para enviar un mensaje a tu correo</string>
+    <string name="login_verified_mail_error_cancel">Cancelar</string>
+    <string name="register_error_user">Correo Invalido</string>
+    <string name="register_error_password">Contraseña Invalida</string>
+    <string name="register_error_password_not_match">Las contraseñas no son iguales</string>
+    <string name="register_created">Te has registrado correctamente</string>
+    <string name="register_created_error">Hubo un error registrándose</string>
+
+    <string name="default_client_id" tools:ignore="TypographyDashes">317665647344-i6a8ok7l80nl3g5noav3pj58mrkepm5n.apps.googleusercontent.com</string>
 </resources>
