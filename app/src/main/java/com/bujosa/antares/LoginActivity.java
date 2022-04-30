@@ -197,7 +197,7 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString("user",json);
             editor.apply();
 
-            Toast.makeText(this, "Bienvenido de nuevo " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Bienvenido de nuevo " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
             startActivity(new Intent(LoginActivity.this,
                     MainActivity.class));
