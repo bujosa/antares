@@ -5,9 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.GridView;
 
-import com.bujosa.antares.adapter.MenuAdapter;
-import com.bujosa.antares.entity.Menu;
-import com.bujosa.antares.entity.Travel;
+import com.bujosa.antares.utils.MenuAdapter;
+import com.bujosa.antares.utils.Menu;
+import com.bujosa.antares.travel.Travel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

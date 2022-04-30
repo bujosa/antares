@@ -11,22 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Antares">
         <activity
-            android:name=".LoginActivity"
+            android:name=".authentication.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".authentication.SignupActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".TravelDetailActivity"
+            android:name=".travel.TravelDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".TravelActivity"
+            android:name=".travel.TravelActivity"
             android:exported="false" />
         <activity
-            android:name=".FavoritesListTravelActivity"
+            android:name=".travel.FavoritesListTravelActivity"
             android:exported="false" />
         <activity
             android:name=".SplashScreenActivity"

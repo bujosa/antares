@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     android:orientation="vertical"
-    tools:context=".SignupActivity">
+    tools:context=".authentication.SignupActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_email"
