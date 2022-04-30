@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Antares</string>
+    <string name="textview">TextView</string>
+    <string name="available_travels">Viajes Disponibles</string>
+    <string name="search">Buscador</string>
+    <string name="item_title">Titulo del viaje</string>
+    <string name="detail_title">Titulo del viaje</string>
+    <string name="description">Descripción </string>
+    <string name="description_label">Descripción</string>
+    <string name="location_label">Ubicación</string>
+    <string name="location">Ubicación</string>
+    <string name="price_label">Precio</string>
+    <string name="price">Price</string>
+    <string name="date_start_label">Fecha de inicio</string>
+    <string name="date_start">date</string>
+    <string name="date_end_label">Fecha de salida</string>
+    <string name="date_end">fecha de salida</string>
+    <string name="favorite_label">Seleccionar</string>
+    <string name="filter">Busqueda Avanzada</string>
+    <string name="min_price_title">Precio minimo:</string>
+    <string name="min_price_edit_text">0</string>
+    <string name="max_price_edit_text">9999</string>
+    <string name="apply_filter_button">Filtrar</string>
+    <string name="cancel_filter_button">Cancelar</string>
+    <string name="buyButton">Comprar Viaje</string>
 </resources>
