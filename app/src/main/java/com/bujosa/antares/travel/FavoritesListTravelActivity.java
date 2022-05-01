@@ -33,6 +33,8 @@ public class FavoritesListTravelActivity extends AppCompatActivity {
 
         textView.setText("Lugares Favoritos");
 
+        findViewById(R.id.floating_add_trip).setVisibility(View.INVISIBLE);
+
         imageButton.setVisibility(View.INVISIBLE);
         recyclerView=findViewById(R.id.listRecyclerView);
 
