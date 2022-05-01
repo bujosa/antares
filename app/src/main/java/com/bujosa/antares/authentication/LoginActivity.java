@@ -14,6 +14,7 @@ import android.transition.TransitionSet;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bujosa.antares.MainActivity;
@@ -36,13 +37,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 534543;
     private FirebaseAuth oAuth;
-    private Button signInButtonMail, signUpButton, signInButtonGoogle;
 
-    private TextInputLayout loginEmailParent;
-    private TextInputLayout loginPasswordParent;
+    private Button signInButtonMail, signUpButton;
 
-    private AutoCompleteTextView loginEmail;
-    private AutoCompleteTextView loginPassword;
+    private ImageView signInButtonGoogle;
+
+    private TextInputLayout loginEmailParent, loginPasswordParent;
+
+    private AutoCompleteTextView loginEmail, loginPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

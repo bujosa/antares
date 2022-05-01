@@ -28,8 +28,8 @@
     <string name="login_email_auto_complete">Correo</string>
     <string name="string_login_password_auto_complete">Contraseña</string>
     <string name="string_register_password_auto_complete">Confirmar la Contraseña</string>
-    <string name="login_button_mail_text">Iniciar Sesión</string>
-    <string name="login_button_gmail_text">GMAIL</string>
+    <string name="login_button_mail_text">Acceder</string>
+    <string name="login_button_gmail_text">Acceder con Google</string>
     <string name="login_button_register_text">Registrarse</string>
     <string name="login_email_error_one">El correo no puede estar vacío</string>
     <string name="login_email_error_two">La contraseña no puede estar vacía</string>
@@ -46,4 +46,5 @@
     <string name="register_created_error">Hubo un error registrándose</string>
 
     <string name="default_client_id" tools:ignore="TypographyDashes">317665647344-i6a8ok7l80nl3g5noav3pj58mrkepm5n.apps.googleusercontent.com</string>
+    <string name="or">---- Acceder con -----</string>
 </resources>

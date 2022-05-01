@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/login_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
         android:src="@drawable/ic_logo"
         android:contentDescription="@string/app_name" />
 
@@ -41,8 +41,7 @@
                     android:background="@color/white"
                     android:textSize="30sp"
                     android:maxLines="1"
-                    android:singleLine="true"
-                    android:layout_marginTop="20dp"/>
+                    android:singleLine="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,37 +64,53 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/login_button_mail"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:background="@drawable/circle"
-                android:textAllCaps="true"
-                android:text="@string/login_button_mail_text"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatButton
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/login_button_mail"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:background="@drawable/circle"
+                    android:textAllCaps="true"
+                    android:text="@string/login_button_mail_text"
+                    android:layout_marginTop="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/login_button_register"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="@color/white"
+                    android:textAllCaps="true"
+                    android:text="@string/login_button_register_text"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/or"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:textSize="20sp"/>
+
+            <ImageView
                 android:id="@+id/login_button_gmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:background="@drawable/circle"
-                android:backgroundTint="@color/white"
-                android:textAllCaps="true"
-                android:text="@string/login_button_gmail_text"
-                android:layout_marginTop="10dp"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/login_button_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:background="@drawable/circle"
-                android:backgroundTint="@color/red"
-                android:textAllCaps="true"
-                android:text="@string/login_button_register_text"
-                android:layout_marginTop="10dp"/>
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_google"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name" />
 
         </LinearLayout>
 
