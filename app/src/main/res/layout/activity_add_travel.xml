@@ -1,9 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/form_travel"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="18dp"
     tools:context=".travel.AddTravelActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/form_travel"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        />
+
+    <EditText
+        android:id="@+id/form_travel_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/form_title_travel"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/form_travel_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/form_travel_description"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/form_travel_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/form_travel_price"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/form_travel_start_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:clickable="true"
+        android:focusable="false"
+        android:hint="@string/form_travel_start_date"
+        android:inputType="date"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/form_travel_end_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:clickable="true"
+        android:focusable="false"
+        android:hint="@string/form_travel_end_date"
+        android:inputType="date"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/form_travel_latitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/form_travel_latitude"
+        android:inputType="numberSigned|numberDecimal" />
+
+    <EditText
+        android:id="@+id/form_travel_longitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/form_travel_longitude"
+        android:inputType="numberSigned|numberDecimal" />
+
+    <ImageView
+        android:id="@+id/form_travel_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:alpha="1.0"
+        android:clickable="true"
+        android:contentDescription="@string/app_name"
+        android:focusable="true"
+        android:scaleType="centerCrop"
+        android:onClick="pickImage"
+        android:src="@drawable/ic_default_image" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_save_travel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="end|bottom"
+            android:backgroundTint="@color/white"
+            android:onClick="saveTravel"
+            android:contentDescription="@string/save_travel"
+            android:src="@android:drawable/ic_menu_save" />
+
+    </RelativeLayout>
+
+</LinearLayout>
