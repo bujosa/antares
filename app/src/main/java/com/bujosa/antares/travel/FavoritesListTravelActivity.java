@@ -16,7 +16,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
-
 public class FavoritesListTravelActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
@@ -46,7 +45,7 @@ public class FavoritesListTravelActivity extends AppCompatActivity {
         travelService.loadTravels(filterInputs).addOnSuccessListener(documentSnapshots -> {
             List<Travel> types = documentSnapshots.toObjects(Travel.class);
             recyclerView.setAdapter(new TravelAdapter(types, this, false));
-        }).addOnFailureListener(e -> showMessage("Error loading trips. Please verify. " + e.getMessage()));
+        }).addOnFailureListener(e -> showMessage("Error cargando los viajes " + e.getMessage()));
 
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));

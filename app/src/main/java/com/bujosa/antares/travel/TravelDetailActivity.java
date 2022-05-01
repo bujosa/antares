@@ -14,12 +14,18 @@ import com.bujosa.antares.MainActivity;
 import com.bujosa.antares.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 
 public class TravelDetailActivity extends AppCompatActivity {
 
     TextView title, secondTitle, description, price, startDate, endDate;
     ImageView imageView;
     Button buyButton;
+
+    final private DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +54,8 @@ public class TravelDetailActivity extends AppCompatActivity {
         secondTitle.setText(travel.getTitle());
         description.setText(travel.getDescription());
         price.setText(priceResult);
-        startDate.setText(travel.getStartDate().toString());
-        endDate.setText(travel.getEndDate().toString());
+        startDate.setText(formatter.format(travel.getStartDate()));
+        endDate.setText(formatter.format(travel.getEndDate()));
 
         buyButton.setOnClickListener(view -> {
             Toast toast = Toast.makeText(this,"Haz comprado este viaje", Toast.LENGTH_LONG);

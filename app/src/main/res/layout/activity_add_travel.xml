@@ -21,6 +21,7 @@
         android:id="@+id/form_travel_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:autofillHints=""
         android:hint="@string/form_title_travel"
         android:inputType="text" />
@@ -29,6 +30,7 @@
         android:id="@+id/form_travel_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:autofillHints=""
         android:hint="@string/form_travel_description"
         android:inputType="text" />
@@ -37,6 +39,7 @@
         android:id="@+id/form_travel_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:autofillHints=""
         android:hint="@string/form_travel_price"
         android:inputType="numberDecimal" />
@@ -45,6 +48,7 @@
         android:id="@+id/form_travel_start_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:autofillHints=""
         android:clickable="true"
         android:focusable="false"
@@ -59,6 +63,7 @@
         android:autofillHints=""
         android:clickable="true"
         android:focusable="false"
+        android:textSize="20sp"
         android:hint="@string/form_travel_end_date"
         android:inputType="date"
         android:maxLines="1" />
@@ -67,6 +72,7 @@
         android:id="@+id/form_travel_latitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:autofillHints=""
         android:hint="@string/form_travel_latitude"
         android:inputType="numberSigned|numberDecimal" />
@@ -75,6 +81,7 @@
         android:id="@+id/form_travel_longitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:autofillHints=""
         android:hint="@string/form_travel_longitude"
         android:inputType="numberSigned|numberDecimal" />
