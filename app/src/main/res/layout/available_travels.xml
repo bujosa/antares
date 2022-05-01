@@ -43,8 +43,24 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listRecyclerView"
+        android:layout_weight="2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="61dp" />
+        tools:layout_editor_absoluteY="61dp"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_add_trip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:backgroundTint="@color/white"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_input_add"
+        android:onClick="addTravel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:contentDescription="@string/add_more_travel" />
+
 </LinearLayout>

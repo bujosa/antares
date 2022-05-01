@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 
 public class TravelDetailActivity extends AppCompatActivity {
 
-    TextView title, secondTitle, description, location, price, startDate, endDate;
+    TextView title, secondTitle, description, price, startDate, endDate;
     ImageView imageView;
     Button buyButton;
 
@@ -33,7 +33,6 @@ public class TravelDetailActivity extends AppCompatActivity {
         description = findViewById(R.id.detailDescriptionTextView);
         price = findViewById(R.id.detailPriceTextView);
         imageView = findViewById(R.id.detailImageView);
-        location = findViewById(R.id.detailLocationTextView);
         startDate = findViewById(R.id.detailStartDateTextView);
         endDate = findViewById(R.id.detailEndDateTextView);
         buyButton = findViewById(R.id.buyButton);
@@ -49,9 +48,9 @@ public class TravelDetailActivity extends AppCompatActivity {
         secondTitle.setText(travel.getTitle());
         description.setText(travel.getDescription());
         price.setText(priceResult);
-        location.setText(travel.getPlace());
-        startDate.setText(travel.getStartDate());
-        endDate.setText(travel.getEndDate());
+        startDate.setText(travel.getStartDate().toString());
+        endDate.setText(travel.getEndDate().toString());
+
         buyButton.setOnClickListener(view -> {
             Toast toast = Toast.makeText(this,"Haz comprado este viaje", Toast.LENGTH_LONG);
             toast.show();
