@@ -1,10 +1,7 @@
 package com.bujosa.antares.travel;
 
-import static android.content.Context.MODE_PRIVATE;
-
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bujosa.antares.R;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.ViewHolder>{
@@ -48,6 +42,7 @@ public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Travel travel = travelList.get(position);
         holder.textView.setText(travel.getTitle());
+
         if(travel.getFavorite()) {
             holder.button.setBackgroundResource(R.drawable.ic_favorite_red_24);
         } else {
@@ -78,11 +73,13 @@ public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.ViewHolder
             button=itemView.findViewById(R.id.itemFavoriteButton);
             textView=itemView.findViewById(R.id.itemTextView);
             imageView=itemView.findViewById(R.id.itemImageView);
+
             imageView.setOnClickListener(view -> {
                 int position = getAdapterPosition();
                 Travel travel = travelList.get(position);
                 moveToDetail(travel);
             });
+
             button.setOnClickListener(view -> {
                 int position = getAdapterPosition();
                 Travel travel = travelList.get(position);
@@ -94,22 +91,17 @@ public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.ViewHolder
     }
 
     private void likeClick(Travel travel, Button button, int position){
-        SharedPreferences sharedPreferences = this.context.getSharedPreferences("MyPreferences",MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("mytravels", null);
-        Type type = new TypeToken<ArrayList<Travel>>() {}.getType();
-        List<Travel> travels = gson.fromJson(json, type);
-        if (travels == null){
-            travels = new ArrayList<>();
-        }
+
+        TravelService travelService = new TravelService(FirebaseFirestore.getInstance());
+
 
         if(travel.getFavorite()){
             button.setBackgroundResource(R.drawable.ic_favorite_shadow_24);
             travel.setFavorite(false);
-            for (int i = 0; i < travels.size(); i++) {
-                Travel currentTravel = travels.get(i);
-                if(currentTravel.getKey().equals(travel.getKey())){
-                    travels.remove(i);
+            travelService.updateTravel(travel);
+            for (int i = 0; i < travelList.size(); i++) {
+                Travel currentTravel = travelList.get(i);
+                if(currentTravel.getId().equals(travel.getId())){
                     if(!global){
                         travelList.remove(i);
                         notifyItemRemoved(position);
@@ -121,35 +113,18 @@ public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.ViewHolder
         }else{
             button.setBackgroundResource(R.drawable.ic_favorite_red_24);
             travel.setFavorite(true);
-            travels.add(travel);
+            travelService.updateTravel(travel);
         }
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson favoriteList = new Gson();
-        String result = favoriteList.toJson(travels);
-        editor.putString("mytravels",result);
-
-        if(global){
-            Gson currentList = new Gson();
-            String currentResult = currentList.toJson(travelList);
-            editor.putString("travels", currentResult);
-        }else{
-            String globalJson = sharedPreferences.getString("travels", null);
-            Type globalType = new TypeToken<ArrayList<Travel>>() {}.getType();
-            List<Travel> globalTravels = gson.fromJson(globalJson, globalType);
-
-            for(int i = 0; i < globalTravels.size(); i++){
-                Travel currentTravel = globalTravels.get(i);
-                if(currentTravel.getKey().equals(travel.getKey())){
+        if(!global){
+            for(int i = 0; i < travelList.size(); i++){
+                Travel currentTravel = travelList.get(i);
+                if(currentTravel.getId().equals(travel.getId())){
                     currentTravel.setFavorite(travel.getFavorite());
                     break;
                 }
             }
-            Gson globalList = new Gson();
-            String globalResult = globalList.toJson(globalTravels);
-            editor.putString("travels", globalResult);
         }
-        editor.apply();
     }
 
     private void moveToDetail(Travel travel){
