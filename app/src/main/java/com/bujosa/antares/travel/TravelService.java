@@ -24,6 +24,12 @@ public class TravelService {
             if (filterInputs.hasFavorite()) {
                 query = query.whereEqualTo("favorite", filterInputs.getFavorite());
             }
+            if (filterInputs.hasMinPrice()) {
+                query = query.whereGreaterThanOrEqualTo("price", filterInputs.getMinPrice());
+            }
+            if (filterInputs.hasMaxPrice()) {
+                query = query.whereLessThanOrEqualTo("price", filterInputs.getMaxPrice());
+            }
         }
 
         return query.get();

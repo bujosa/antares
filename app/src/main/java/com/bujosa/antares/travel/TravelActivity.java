@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,7 +35,7 @@ public class TravelActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == Activity.RESULT_OK) {
-                    loadTravels();
+                    loadTravels(null);
                 }
             });
 
@@ -51,7 +52,7 @@ public class TravelActivity extends AppCompatActivity {
 
         imageButton.setOnClickListener(view -> showDialog());
 
-        loadTravels();
+        loadTravels(null);
     }
 
     public void showDialog(){
@@ -68,7 +69,10 @@ public class TravelActivity extends AppCompatActivity {
             dialog.hide();
             minPrice = Integer.parseInt(String.valueOf(minPriceFilter.getText()));
             maxPrice = Integer.parseInt(String.valueOf(maxPriceFilter.getText()));
-            loadTravels();
+            FilterInputs filterInputs = new FilterInputs();
+            filterInputs.setMaxPrice(maxPrice);
+            filterInputs.setMinPrice(minPrice);
+            loadTravels(filterInputs);
         });
 
         dialogBuilder.setView(filterView);
@@ -76,28 +80,12 @@ public class TravelActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    public List<Travel> matchCriteria(List<Travel> resultTravel, List<Travel> travels){
-        for(int i = 0; i < travels.size(); i++){
-            Travel currentTravel = travels.get(i);
-            System.out.println(minPrice);
-            System.out.println(maxPrice);
-            if(currentTravel.getPrice()>= minPrice && currentTravel.getPrice()<= maxPrice){
-                resultTravel.add(currentTravel);
-            }
-        }
-
-        return resultTravel;
-    }
-
-    private void loadTravels() {
-        travelService.loadTravels(null).addOnSuccessListener(documentSnapshots -> {
+    private void loadTravels(@Nullable FilterInputs filterInputs) {
+        travelService.loadTravels(filterInputs).addOnSuccessListener(documentSnapshots -> {
             List<Travel> types = documentSnapshots.toObjects(Travel.class);
             changesRecycleView(new ArrayList<>(types));
-//                setDismissibleRecycle();
-            showMessage(types.size() + " trips loaded successfully");
-        }).addOnFailureListener(e -> showMessage("Error loading trips. Please verify. " + e.getMessage()));
+        }).addOnFailureListener(e -> showMessage("Error cargando los viajes " + e.getMessage()));
     }
-
 
     public void addTravel(View view) {
         Intent intent = new Intent(this, AddTravelActivity.class);
@@ -105,15 +93,8 @@ public class TravelActivity extends AppCompatActivity {
     }
 
     public void changesRecycleView(ArrayList<Travel> travels){
-        List<Travel> resultTravel =  new ArrayList<>();
-        resultTravel = matchCriteria(resultTravel, travels);
         recyclerView = findViewById(R.id.listRecyclerView);
-        if(resultTravel.size() == travels.size()){
-            recyclerView.setAdapter(new TravelAdapter(resultTravel, this, true));
-        }else{
-            recyclerView.setAdapter(new TravelAdapter(resultTravel, this, false));
-        }
-
+        recyclerView.setAdapter(new TravelAdapter(travels, this, true));
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
     }
 

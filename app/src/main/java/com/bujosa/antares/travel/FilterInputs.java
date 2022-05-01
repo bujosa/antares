@@ -3,8 +3,8 @@ package com.bujosa.antares.travel;
 public class FilterInputs {
 
     private Boolean favorite = null;
-    private double minPrice = -1;
-    private double maxPrice = -1;
+    private Double minPrice = Double.NEGATIVE_INFINITY;
+    private Double maxPrice = Double.NEGATIVE_INFINITY;
 
     public FilterInputs() {
     }
@@ -25,7 +25,7 @@ public class FilterInputs {
         return (minPrice > 0);
     }
 
-    public double getMinPrice() {
+    public Double getMinPrice() {
         return minPrice;
     }
 
@@ -37,7 +37,7 @@ public class FilterInputs {
         return (maxPrice > 0);
     }
 
-    public double getMaxPrice() {
+    public Double getMaxPrice() {
         return maxPrice;
     }
 
