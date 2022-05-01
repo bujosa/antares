@@ -47,4 +47,14 @@
 
     <string name="default_client_id" tools:ignore="TypographyDashes">317665647344-i6a8ok7l80nl3g5noav3pj58mrkepm5n.apps.googleusercontent.com</string>
     <string name="or">---- Acceder con -----</string>
+    <string name="add_more_travel">Agregar mas Viajes</string>
+    <string name="save_travel">Guardar nuevo Viaje</string>
+    <string name="form_travel">Formulario de Viajes</string>
+    <string name="form_title_travel">Titulo</string>
+    <string name="form_travel_description">Descripcion</string>
+    <string name="form_travel_price">Precio</string>
+    <string name="form_travel_start_date">Fecha de inicio</string>
+    <string name="form_travel_end_date">Fecha final</string>
+    <string name="form_travel_latitude">Latitud</string>
+    <string name="form_travel_longitude">Longitud</string>
 </resources>
