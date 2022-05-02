@@ -128,7 +128,7 @@ public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.ViewHolder
     }
 
     private void moveToDetail(Travel travel){
-        Intent intent = new Intent(context, TravelDetailActivity.class);
+        Intent intent = new Intent(context, TravelActivity.class);
         intent.putExtra("Travel", travel);
         context.startActivity(intent);
     }

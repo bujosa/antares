@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".travel.TravelDetailActivity">
+    tools:context=".travel.TravelActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -62,8 +62,48 @@
                     android:layout_marginBottom="18dp"
                     android:layout_marginStart="18dp"/>
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/itemMapButton"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="17dp"
+                    android:layout_marginBottom="17dp"
+                    android:background="@drawable/ic_map"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardItemMapView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:cardElevation="4dp"
+                app:cardCornerRadius="20dp"
+                app:cardUseCompatPadding="true"
+                android:visibility="gone">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/map_view"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/itemImageButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="18dp"
+                    android:layout_marginBottom="18dp"
+                    android:background="@drawable/ic_image"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/descriptionLabel"
@@ -135,15 +175,6 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/date_end"
                 android:textSize="20sp" />
-
-            <Button
-                android:id="@+id/buyButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#009688"
-                android:layout_marginBottom="20dp"
-                android:elevation="10dp"
-                android:text="@string/buyButton" />
 
         </LinearLayout>
 
