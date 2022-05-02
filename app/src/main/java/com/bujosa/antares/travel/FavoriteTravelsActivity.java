@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
-public class FavoritesListTravelActivity extends AppCompatActivity {
+public class FavoriteTravelsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ImageButton imageButton;
@@ -26,7 +26,7 @@ public class FavoritesListTravelActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.available_travels);
+        setContentView(R.layout.activity_travels);
 
         imageButton=findViewById(R.id.imageButton);
         textView=findViewById(R.id.textView2);
