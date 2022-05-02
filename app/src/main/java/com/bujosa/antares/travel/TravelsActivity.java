@@ -43,7 +43,7 @@ public class TravelsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.available_travels);
+        setContentView(R.layout.activity_travels);
 
         recyclerView = findViewById(R.id.listRecyclerView);
         imageButton = findViewById(R.id.imageButton);

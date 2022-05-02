@@ -6,6 +6,7 @@
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/drawable/circle.xml" value="0.1165" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/drawable/ic__logo.xml" value="0.164" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/drawable/ic_baseline_filter_list_24.xml" value="0.2565" />
+        <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/drawable/ic_buy.xml" value="0.1335" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/drawable/ic_favorite_red_24.xml" value="0.2565" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/drawable/ic_favorite_shadow_24.xml" value="0.2565" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/drawable/ic_image.xml" value="0.2405" />
@@ -19,14 +20,18 @@
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/activity_main.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/activity_map.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/activity_signup.xml" value="0.30052083333333335" />
+        <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/activity_travel.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/activity_travel_detail.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/available_travels.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/card_travel.xml" value="0.2109375" />
+        <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/extend_map.xml" value="0.215625" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/ic_favorite_shadow_24.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/launcher_logo.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/list_element.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/menu_item.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/popup.xml" value="0.30052083333333335" />
         <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/splash_screen.xml" value="0.30052083333333335" />
+        <entry key="..\:/Users/david/Desktop/Programing/Android/Antares/app/src/main/res/layout/travels.xml" value="0.215625" />
       </map>
     </option>
   </component>

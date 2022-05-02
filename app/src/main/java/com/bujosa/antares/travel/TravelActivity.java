@@ -1,8 +1,10 @@
 package com.bujosa.antares.travel;
 
-import android.content.Intent;
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,9 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import com.bujosa.antares.MainActivity;
 import com.bujosa.antares.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,15 +32,23 @@ import java.util.Locale;
 
 public class TravelActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    TextView title, secondTitle, description, price, startDate, endDate;
+    TextView title, description, price, startDate, endDate;
     ImageView imageView;
-    Button buyButton, mapButton, imageButton;
+    Button  mapButton, imageButton, extendMapButton;
 
-    private static final int DEFAULT_ZOOM = 17;
+    private static final int DEFAULT_ZOOM = 5;
 
     private Travel travel;
 
+    private GoogleMap googleMap;
+
     final private DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+
+    private static final int PERMISSION_REQUEST_CODE_LOCATION = 1;
+
+    String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
+
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +58,14 @@ public class TravelActivity extends FragmentActivity implements OnMapReadyCallba
         travel = (Travel) getIntent().getSerializableExtra("Travel");
 
         title = findViewById(R.id.detailTitleTextView);
-        secondTitle = findViewById(R.id.itemTextView);
         description = findViewById(R.id.detailDescriptionTextView);
         price = findViewById(R.id.detailPriceTextView);
         imageView = findViewById(R.id.detailImageView);
         startDate = findViewById(R.id.detailStartDateTextView);
         endDate = findViewById(R.id.detailEndDateTextView);
-        buyButton = findViewById(R.id.buyButton);
         imageButton = findViewById(R.id.itemImageButton);
         mapButton = findViewById(R.id.itemMapButton);
+        extendMapButton = findViewById(R.id.extendMapButton);
 
 
 
@@ -67,7 +77,6 @@ public class TravelActivity extends FragmentActivity implements OnMapReadyCallba
                 .into(imageView);
 
         title.setText(travel.getTitle());
-        secondTitle.setText(travel.getTitle());
         description.setText(travel.getDescription());
         price.setText(priceResult);
         startDate.setText(formatter.format(travel.getStartDate()));
@@ -80,14 +89,6 @@ public class TravelActivity extends FragmentActivity implements OnMapReadyCallba
 
         mapFragment.getMapAsync(this);
 
-        buyButton.setOnClickListener(view -> {
-            Toast toast = Toast.makeText(this,"Haz comprado este viaje", Toast.LENGTH_LONG);
-            toast.show();
-            SystemClock.sleep(2000);
-            startActivity(new Intent(this,
-                    MainActivity.class));
-        });
-
         imageButton.setOnClickListener(view -> {
             findViewById(R.id.cardItemMapView).setVisibility(View.GONE);
             findViewById(R.id.cardItemView).setVisibility(View.VISIBLE);
@@ -98,16 +99,83 @@ public class TravelActivity extends FragmentActivity implements OnMapReadyCallba
             findViewById(R.id.cardItemView).setVisibility(View.GONE);
         });
 
+        extendMapButton.setOnClickListener(view -> {
+            showDialog();
+            extendMapButton.setVisibility(View.GONE);
+        });
+
     }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         LatLng location = new LatLng(travel.getLatitude(), travel.getLongitude());
 
-        googleMap.addMarker(new MarkerOptions()
+        this.googleMap = googleMap;
+
+        this.googleMap.addMarker(new MarkerOptions()
                 .position(location)
                 .title(travel.getTitle()));
 
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, DEFAULT_ZOOM));
+        this.googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, DEFAULT_ZOOM));
+        requireLocationPermission();
+        uiSettings();
+    }
+
+    public void buyTravel(View view){
+        Toast.makeText(this,"Haz comprado este viaje", Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode != PERMISSION_REQUEST_CODE_LOCATION) {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        uiSettings();
+    }
+
+    public void showDialog(){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        final View extendMap = getLayoutInflater().inflate(R.layout.extend_map, null);
+        Button exitExtendMapButton = extendMap.findViewById(R.id.exitExtendMapButton);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.extendMapView);
+
+        assert mapFragment != null;
+
+        mapFragment.getMapAsync(this);
+
+        exitExtendMapButton.setOnClickListener(l -> {
+            mapFragment.onDestroyView();
+            dialog.dismiss();
+        });
+
+        dialogBuilder.setView(extendMap);
+        dialog = dialogBuilder.create();
+        dialog.show();
+    }
+
+    private void requireLocationPermission() {
+        String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
+        if (ContextCompat.checkSelfPermission(this, permissions[0]) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE_LOCATION);
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private void uiSettings() {
+        try {
+            if (ContextCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED) {
+                googleMap.setMyLocationEnabled(true);
+                googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+            } else {
+                googleMap.setMyLocationEnabled(false);
+                googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+                requireLocationPermission();
+            }
+        } catch (SecurityException ignored) {}
     }
 }

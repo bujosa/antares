@@ -1,8 +1,8 @@
 package com.bujosa.antares.utils;
 
-import com.bujosa.antares.travel.FavoritesListTravelActivity;
+import com.bujosa.antares.travel.FavoriteTravelsActivity;
 import com.bujosa.antares.R;
-import com.bujosa.antares.travel.TravelActivity;
+import com.bujosa.antares.travel.TravelsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +45,8 @@ public class Menu {
 
     public static List<Menu> generateMenu(){
         List<Menu> menu = new ArrayList<>();
-        menu.add(new Menu("Viajes Disponibles", R.drawable.travel, TravelActivity.class));
-        menu.add(new Menu("Viajes Favoritos", R.drawable.travel_selection, FavoritesListTravelActivity.class));
+        menu.add(new Menu("Viajes Disponibles", R.drawable.travel, TravelsActivity.class));
+        menu.add(new Menu("Viajes Favoritos", R.drawable.travel_selection, FavoriteTravelsActivity.class));
         return menu;
     }
 }

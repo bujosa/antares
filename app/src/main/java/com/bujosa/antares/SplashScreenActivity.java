@@ -31,8 +31,11 @@ public class SplashScreenActivity extends AppCompatActivity {
                     LoginActivity.class)),2000);
         }else{
             Toast.makeText(this, "Bienvenido de nuevo " + user.getEmail(), Toast.LENGTH_SHORT).show();
-            new Handler(Looper.getMainLooper()).postDelayed(() -> startActivity(new Intent(SplashScreenActivity.this,
-                    MainActivity.class)),2000);
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                startActivity(new Intent(SplashScreenActivity.this,
+                        MainActivity.class));
+                finish();
+            },2000);
         }
     }
 }

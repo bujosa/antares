@@ -19,7 +19,6 @@ public class Travel implements Serializable {
 
     private Float price;
 
-    // Add default value
     private Boolean favorite = false;
 
     private String image;
@@ -91,7 +90,6 @@ public class Travel implements Serializable {
         this.image = image;
     }
 
-    // TODO: Use this with map
     public double getLatitude() {
         return latitude;
     }
@@ -100,7 +98,6 @@ public class Travel implements Serializable {
         this.latitude = latitude;
     }
 
-    // TODO: Use this with map
     public double getLongitude() {
         return longitude;
     }

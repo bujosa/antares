@@ -23,7 +23,7 @@
     <string name="max_price_edit_text">9999</string>
     <string name="apply_filter_button">Filtrar</string>
     <string name="cancel_filter_button">Cancelar</string>
-    <string name="buyButton">Comprar Viaje</string>
+    <string name="buyButton">Comprar</string>
 
     <string name="login_email_auto_complete">Correo</string>
     <string name="string_login_password_auto_complete">Contraseña</string>
@@ -57,4 +57,7 @@
     <string name="form_travel_end_date">Fecha final</string>
     <string name="form_travel_latitude">Latitud</string>
     <string name="form_travel_longitude">Longitud</string>
+    <string name="extend_map">Mapa Extendido</string>
+    <string name="exit_extend_map">Volver</string>
+    <string name="buy_travel">Comprar Viaje</string>
 </resources>
