@@ -5,8 +5,8 @@
     tools:ignore="CoarseFineLocation">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -14,6 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Antares">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAJ3atjCQZ8u84opvW0zVZFv9c0CB_I-Xw" />
+
         <activity
             android:name=".travel.AddTravelActivity"
             android:exported="false" />
@@ -27,10 +32,10 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".travel.TravelDetailActivity"
+            android:name=".travel.TravelActivity"
             android:exported="false" />
         <activity
-            android:name=".travel.TravelActivity"
+            android:name=".travel.TravelsActivity"
             android:exported="false" />
         <activity
             android:name=".travel.FavoritesListTravelActivity"

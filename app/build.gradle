@@ -38,12 +38,13 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
-    implementation platform('com.google.firebase:firebase-bom:29.2.1')
     implementation 'com.google.firebase:firebase-core:20.1.2'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.google.firebase:firebase-firestore:24.1.1'
     implementation 'com.google.firebase:firebase-storage:20.0.1'
+
+    implementation platform('com.google.firebase:firebase-bom:29.2.1')
 
     testImplementation 'junit:junit:4.13.2'
 
