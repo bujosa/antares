@@ -15,7 +15,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             tools:layout_editor_absoluteX="1dp"
@@ -51,17 +51,6 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/item" />
 
-                <TextView
-                    android:id="@+id/itemTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/item_title"
-                    android:textColor="#fff"
-                    style="@style/TextAppearance.AppCompat.Title"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="18dp"
-                    android:layout_marginStart="18dp"/>
-
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/itemMapButton"
                     android:layout_width="45dp"
@@ -94,12 +83,23 @@
                     android:layout_height="match_parent" />
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/extendMapButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="68dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/ic_extend"
+                    android:visibility="visible"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/itemImageButton"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:layout_gravity="bottom|end"
-                    android:layout_marginEnd="18dp"
-                    android:layout_marginBottom="18dp"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="18dp"
                     android:background="@drawable/ic_image"
                     tools:ignore="SpeakableTextPresentCheck" />
 
@@ -112,7 +112,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/description_label"
                 android:textColor="#000000"
-                android:textSize="25sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/detailDescriptionTextView"
@@ -123,7 +123,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:text="@string/description"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/priceLabel"
@@ -132,7 +132,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/price_label"
                 android:textColor="#000000"
-                android:textSize="25sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/detailPriceTextView"
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/price"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/dateStartLabel"
@@ -149,7 +149,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/date_start_label"
                 android:textColor="#000000"
-                android:textSize="25sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/detailStartDateTextView"
@@ -157,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/date_start"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/dateEndLabel"
@@ -166,7 +166,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/date_end_label"
                 android:textColor="#000000"
-                android:textSize="25sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/detailEndDateTextView"
@@ -174,7 +174,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/date_end"
-                android:textSize="20sp" />
+                android:textSize="25sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:backgroundTint="@color/white"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_buy"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:onClick="buyTravel"
+                android:contentDescription="@string/buy_travel" />
 
         </LinearLayout>
 
