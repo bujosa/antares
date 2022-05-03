@@ -11,6 +11,7 @@
     <string name="location_label">Ubicación</string>
     <string name="location">Ubicación</string>
     <string name="price_label">Precio</string>
+    <string name="bitcoin_label">Precio en Bitcoin</string>
     <string name="price">Price</string>
     <string name="date_start_label">Fecha de inicio</string>
     <string name="date_start">date</string>
