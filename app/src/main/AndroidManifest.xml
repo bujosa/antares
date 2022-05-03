@@ -27,28 +27,60 @@
 
         <activity
             android:name=".travel.AddTravelActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".travel.TravelsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".travel.TravelsActivity" />
+        </activity>
+
         <activity
             android:name=".authentication.LoginActivity"
             android:exported="false" />
+
         <activity
             android:name=".authentication.SignupActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".authentication.LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".authentication.LoginActivity" />
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".travel.TravelActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".travel.TravelsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".travel.TravelsActivity" />
+        </activity>
+
         <activity
             android:name=".travel.TravelsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <activity
             android:name=".travel.FavoriteTravelsActivity"
-            android:exported="false" />
+            android:exported="false" android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
