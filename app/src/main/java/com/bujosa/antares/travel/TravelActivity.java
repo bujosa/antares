@@ -12,11 +12,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
 
 import com.bujosa.antares.R;
+import com.bujosa.antares.coinmarket.CoinMarketService;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,12 +26,24 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Response;
 
-public class TravelActivity extends FragmentActivity implements OnMapReadyCallback {
+
+public class TravelActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     TextView title, description, price, startDate, endDate;
     ImageView imageView;
@@ -70,6 +83,7 @@ public class TravelActivity extends FragmentActivity implements OnMapReadyCallba
 
 
         String priceResult = "" + travel.getPrice();
+
         Picasso.get()
                 .load(travel.getImage())
                 .placeholder(android.R.drawable.ic_dialog_map)
@@ -103,6 +117,8 @@ public class TravelActivity extends FragmentActivity implements OnMapReadyCallba
             showDialog();
             extendMapButton.setVisibility(View.GONE);
         });
+
+        getBitcoinPrice();
 
     }
 
@@ -158,6 +174,41 @@ public class TravelActivity extends FragmentActivity implements OnMapReadyCallba
         dialog.show();
     }
 
+    private void getBitcoinPrice() {
+        CoinMarketService coinMarketService = new CoinMarketService(new OkHttpClient());
+
+        coinMarketService.getBitcoinPrice()
+                .enqueue(new Callback() {
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull final Response response) {
+                        runOnUiThread(() -> {
+                            try {
+                                assert response.body() != null;
+                                JSONObject json = new JSONObject(response.body().string());
+                                JSONArray data = new JSONArray(json.get("data").toString());
+                                JSONObject firstElement = new JSONObject(data.getJSONObject(0).toString());
+                                JSONObject quote = new JSONObject(firstElement.getJSONObject("quote").toString());
+                                JSONObject usd = new JSONObject(quote.getJSONObject("USD").toString());
+                                String btcPrice = usd.get("price").toString().split("\\.")[0];
+
+                                Float bitcoinPrice = travel.getPrice() / Float.parseFloat(btcPrice);
+
+                                DecimalFormat df = new DecimalFormat();
+                                df.setMaximumFractionDigits(4);
+
+                                price.setText(MessageFormat.format("{0} USD - {1} BTC", travel.getPrice(), df.format(bitcoinPrice)));
+                            } catch (JSONException | IOException ignored) {}
+                        });
+
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull final Call call, @NonNull IOException e) {
+                        runOnUiThread(() -> showCoinMarketErrorMessage());
+                    }
+                });
+    }
+
     private void requireLocationPermission() {
         String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION};
         if (ContextCompat.checkSelfPermission(this, permissions[0]) != PackageManager.PERMISSION_GRANTED) {
@@ -177,5 +228,11 @@ public class TravelActivity extends FragmentActivity implements OnMapReadyCallba
                 requireLocationPermission();
             }
         } catch (SecurityException ignored) {}
+    }
+
+    private void showCoinMarketErrorMessage() {
+        Toast.makeText(getApplicationContext(),
+                "Ha ocurrido un error con la api de CoinMarket Cap",
+                Toast.LENGTH_LONG).show();
     }
 }
